@@ -1,0 +1,162 @@
+:root {
+  --bg: #0f1115;
+  --card: #161920;
+  --text: #f5f7fb;
+  --muted: #9aa4b5;
+  --accent: #4bc2f0;
+  --accentText: #0f1115;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+
+.hero {
+  display: grid;
+  gap: 16px;
+}
+
+.hero h1 {
+  margin: 4px 0;
+  font-size: 28px;
+}
+
+.lead {
+  margin: 0;
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 12px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #222836;
+  background: var(--card);
+  color: var(--text);
+  padding: 12px 14px;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+.grid {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid #1f2430;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease,
+    background 0.12s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.card__header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card__description {
+  margin: 8px 0 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: rgba(75, 194, 240, 0.12);
+  color: var(--accent);
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(75, 194, 240, 0.2);
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #222836;
+  color: var(--text);
+  background: #131722;
+  font-size: 12px;
+}
+
+.card__link {
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.empty {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  border: 1px dashed #222836;
+  border-radius: 12px;
+  background: var(--card);
+}
+
+@media (max-width: 720px) {
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}
+
