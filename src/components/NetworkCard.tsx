@@ -11,11 +11,19 @@ const openLink = (url: string) => {
 export function NetworkCard({ network }: Props) {
   return (
     <article className="card" onClick={() => openLink(network.link)}>
-      <div className="card__header">
-        <h3>{network.title}</h3>
-        <span className="pill">{network.category}</span>
+      <div className="card__top">
+        <div className="avatar">
+          <img src={network.logo} alt={network.title} loading="lazy" />
+        </div>
+        <div className="card__meta">
+          <div className="card__header">
+            <h3>{network.title}</h3>
+            <span className="pill">{network.category}</span>
+          </div>
+          <p className="card__description">{network.description}</p>
+        </div>
       </div>
-      <p className="card__description">{network.description}</p>
+
       {network.tags?.length ? (
         <div className="tags">
           {network.tags.map((tag) => (

@@ -24,6 +24,7 @@ const getTelegramTheme = (): ThemeParams => {
 export default function App() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Все");
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     const theme = getTelegramTheme();
@@ -36,6 +37,11 @@ export default function App() {
     if (theme.button_text_color)
       root.setProperty("--accentText", theme.button_text_color);
     if (theme.hint_color) root.setProperty("--muted", theme.hint_color);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowIntro(false), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
   const categories = useMemo(
@@ -58,40 +64,80 @@ export default function App() {
 
   return (
     <div className="page">
+      {showIntro ? (
+        <div className="intro" onClick={() => setShowIntro(false)}>
+          <div className="intro__glow intro__glow--1" />
+          <div className="intro__glow intro__glow--2" />
+          <div className="intro__card">
+            <p className="eyebrow">NeuroMatrix</p>
+            <h2>Подборка ИИ-сервисов</h2>
+            <p className="lead">
+              Текст, код, дизайн, видео, голос и поиск — всё в одном месте.
+              Жмите, чтобы открыть и использовать прямо из Telegram.
+            </p>
+            <div className="intro__pills">
+              <span>40+ сервисов</span>
+              <span>Быстрые ссылки</span>
+              <span>Теги и категории</span>
+            </div>
+            <button className="intro__button">Погнали 🚀</button>
+          </div>
+        </div>
+      ) : null}
+
       <header className="hero">
-        <div>
-          <p className="eyebrow">Телеграм Mini App</p>
-          <h1>Подборка нейросетей</h1>
+        <div className="hero__text">
+          <p className="eyebrow">Telegram Mini App</p>
+          <h1>NeuroMatrix</h1>
           <p className="lead">
-            Быстрые ссылки на сервисы под разные задачи: текст, код, дизайн,
-            голос и поиск.
+            Большой каталог нейросетей под любые задачи. Фильтруйте, ищите и
+            открывайте сервисы в один тап.
           </p>
+          <div className="badges">
+            <span>Ассистенты</span>
+            <span>Дизайн</span>
+            <span>Видео</span>
+            <span>Голос</span>
+            <span>Код</span>
+          </div>
         </div>
         <div className="filters">
-          <input
-            type="search"
-            placeholder="Поиск по названию, тегу, описанию..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <div className="input-wrap">
+            <input
+              type="search"
+              placeholder="Поиск по названию, тегу, описанию..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <div className="input-hint">⌕</div>
+          </div>
+          <div className="chips">
             {categories.map((c) => (
-              <option key={c} value={c}>
+              <button
+                key={c}
+                className={`chip ${category === c ? "chip--active" : ""}`}
+                onClick={() => setCategory(c)}
+              >
                 {c}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
         </div>
       </header>
 
       <main className="grid">
         {filtered.length ? (
-          filtered.map((network) => <NetworkCard key={network.id} network={network} />)
+          filtered.map((network) => (
+            <NetworkCard key={network.id} network={network} />
+          ))
         ) : (
-          <div className="empty">Ничего не найдено. Попробуйте другой запрос.</div>
+          <div className="empty">
+            Ничего не найдено. Попробуйте другой запрос или категорию.
+          </div>
         )}
       </main>
     </div>
   );
 }
 
+  
