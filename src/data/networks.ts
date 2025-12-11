@@ -269,6 +269,204 @@ export const networks: Network[] = [
     link: "https://durable.co",
     logo: "https://durable.co/favicon-32x32.png",
     tags: ["website", "smb"]
+  },
+  {
+    id: "bling",
+    title: "Bling",
+    description: "Генерация идей и быстрые подсказки для старта проекта.",
+    category: "Идеи",
+    link: "https://www.bling.ai",
+    logo: "https://www.bling.ai/favicon.ico",
+    tags: ["idea", "brainstorm"]
+  },
+  {
+    id: "10web",
+    title: "10web",
+    description: "AI-конструктор сайтов и оптимизация перформанса.",
+    category: "Веб-сайты",
+    link: "https://10web.io",
+    logo: "https://10web.io/wp-content/uploads/2020/05/cropped-10web-fav-32x32.png",
+    tags: ["website", "builder"]
+  },
+  {
+    id: "framer",
+    title: "Framer AI",
+    description: "Создание лендингов и прототипов за минуты.",
+    category: "Веб-сайты",
+    link: "https://www.framer.com/ai",
+    logo: "https://framerusercontent.com/modules/assets/favicons/apple-touch-icon.png",
+    tags: ["website", "prototype"]
+  },
+  {
+    id: "rytr",
+    title: "Rytr",
+    description: "Генерация текстов и постов с готовыми шаблонами.",
+    category: "Текст",
+    link: "https://rytr.me",
+    logo: "https://app.rytr.me/apple-touch-icon.png",
+    tags: ["copy", "shortform"]
+  },
+  {
+    id: "jasper",
+    title: "Jasper",
+    description: "Маркетинговые тексты, блоги и автофреймворки.",
+    category: "Текст",
+    link: "https://www.jasper.ai",
+    logo: "https://www.jasper.ai/favicon-32x32.png",
+    tags: ["marketing", "copy"]
+  },
+  {
+    id: "writesonic",
+    title: "Writesonic",
+    description: "Тексты, посты, SEO и соцсети на автопилоте.",
+    category: "Текст",
+    link: "https://writesonic.com",
+    logo: "https://writesonic.com/favicon-32x32.png",
+    tags: ["seo", "copy"]
+  },
+  {
+    id: "chatbase",
+    title: "Chatbase",
+    description: "Создание чат-ботов на основе ваших документов.",
+    category: "Чат-боты",
+    link: "https://www.chatbase.co",
+    logo: "https://www.chatbase.co/favicon-32x32.png",
+    tags: ["bot", "docs"]
+  },
+  {
+    id: "sitegpt",
+    title: "SiteGPT",
+    description: "Бот с ответами по контенту вашего сайта.",
+    category: "Чат-боты",
+    link: "https://www.sitegpt.ai",
+    logo: "https://www.sitegpt.ai/favicon-32x32.png",
+    tags: ["bot", "site"]
+  },
+  {
+    id: "chatsonic",
+    title: "ChatSonic",
+    description: "Чат-бот с поиском и генерацией изображений.",
+    category: "Чат-боты",
+    link: "https://writesonic.com/chat",
+    logo: "https://writesonic.com/favicon-32x32.png",
+    tags: ["bot", "search"]
+  },
+  {
+    id: "make",
+    title: "Make",
+    description: "Низкокодовые автоматизации с триггерами и действиями.",
+    category: "Автоматизация",
+    link: "https://www.make.com",
+    logo: "https://www.make.com/favicon-32x32.png",
+    tags: ["automation", "nocode"]
+  },
+  {
+    id: "zapier",
+    title: "Zapier",
+    description: "Связи между сервисами без кода, библиотека коннекторов.",
+    category: "Автоматизация",
+    link: "https://zapier.com",
+    logo: "https://zapier.com/favicon.ico",
+    tags: ["automation", "integrations"]
+  },
+  {
+    id: "bardeen",
+    title: "Bardeen",
+    description: "Автоматизация рутины в браузере с ИИ.",
+    category: "Автоматизация",
+    link: "https://www.bardeen.ai",
+    logo: "https://www.bardeen.ai/favicon-32x32.png",
+    tags: ["automation", "browser"]
+  },
+  {
+    id: "synthesia",
+    title: "Synthesia",
+    description: "Генерация видео с аватарами по тексту.",
+    category: "Видео",
+    link: "https://www.synthesia.io",
+    logo: "https://www.synthesia.io/favicon-32x32.png",
+    tags: ["avatar", "video"]
+  },
+  {
+    id: "flair",
+    title: "Flair AI",
+    description: "Генерация рекламных креативов и продуктовых кадров.",
+    category: "Дизайн",
+    link: "https://flair.ai",
+    logo: "https://flair.ai/favicon-32x32.png",
+    tags: ["design", "ads"]
+  },
+  {
+    id: "booth",
+    title: "Booth AI",
+    description: "AI-фотосессии и визуалы товаров.",
+    category: "Дизайн",
+    link: "https://booth.ai",
+    logo: "https://booth.ai/favicon-32x32.png",
+    tags: ["product", "photo"]
+  },
+  {
+    id: "canva-ai",
+    title: "Canva AI",
+    description: "Генерация дизайна, текста и изображений внутри Canva.",
+    category: "Дизайн",
+    link: "https://www.canva.com/ai-image-generator/",
+    logo: "https://static.canva.com/static/images/canva-icon.png",
+    tags: ["design", "editor"]
+  },
+  {
+    id: "boomy",
+    title: "Boomy",
+    description: "Создание музыки за минуты с экспортом в стриминги.",
+    category: "Музыка",
+    link: "https://boomy.com",
+    logo: "https://boomy.com/assets/favicons/favicon-32x32.png",
+    tags: ["music", "stream"]
+  },
+  {
+    id: "amper",
+    title: "Amper Music",
+    description: "Генерация треков под настроение и длительность.",
+    category: "Музыка",
+    link: "https://www.shutterstock.com/music/ai",
+    logo: "https://www.shutterstock.com/apple-touch-icon.png",
+    tags: ["music", "stock"]
+  },
+  {
+    id: "jukedeck",
+    title: "Jukedeck",
+    description: "AI-музыка для видео и контента.",
+    category: "Музыка",
+    link: "https://www.jukedeck.com",
+    logo: "https://www.jukedeck.com/favicon.ico",
+    tags: ["music", "video"]
+  },
+  {
+    id: "adcreative",
+    title: "AdCreative",
+    description: "Креативы и баннеры для рекламы с помощью ИИ.",
+    category: "Маркетинг",
+    link: "https://www.adcreative.ai",
+    logo: "https://www.adcreative.ai/favicon-32x32.png",
+    tags: ["ads", "banners"]
+  },
+  {
+    id: "simplified",
+    title: "Simplified",
+    description: "Дизайн, копирайт и соцсети в одном инструменте.",
+    category: "Маркетинг",
+    link: "https://simplified.com",
+    logo: "https://cdn.simplified.com/favicon-32x32.png",
+    tags: ["marketing", "design"]
+  },
+  {
+    id: "pencil",
+    title: "Pencil",
+    description: "Генерация рекламных видео и статичных креативов.",
+    category: "Маркетинг",
+    link: "https://www.trypencil.com",
+    logo: "https://assets.trypencil.com/app/favicon-32x32.png",
+    tags: ["ads", "video"]
   }
 ];
 

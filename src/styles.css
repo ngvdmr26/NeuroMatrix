@@ -33,8 +33,8 @@ body {
   display: grid;
   gap: 16px;
   padding: 18px;
-  background: linear-gradient(120deg, rgba(116, 202, 255, 0.12), transparent)
-    var(--glass);
+  background: linear-gradient(120deg, rgba(116, 202, 255, 0.12), transparent),
+    linear-gradient(240deg, rgba(108, 123, 255, 0.12), transparent);
   border: 1px solid var(--card-border);
   border-radius: 18px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.32);
@@ -77,7 +77,7 @@ body {
 
 .filters {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .input-wrap {
@@ -141,6 +141,10 @@ body {
   margin-top: 20px;
   display: grid;
   gap: 12px;
+}
+
+.grid--recommended {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .card {
@@ -269,62 +273,110 @@ body {
   position: fixed;
   inset: 0;
   backdrop-filter: blur(18px);
-  background: radial-gradient(120% 120% at 20% 20%, rgba(116, 202, 255, 0.12), rgba(0, 0, 0, 0.75));
+  background: radial-gradient(120% 120% at 20% 20%, rgba(116, 202, 255, 0.18), rgba(0, 0, 0, 0.82));
   display: grid;
   place-items: center;
   z-index: 50;
   animation: fadeIn 0.35s ease;
 }
 
-.intro__glow {
+.intro__sky {
   position: absolute;
-  filter: blur(60px);
-  opacity: 0.7;
-  mix-blend-mode: screen;
-}
-
-.intro__glow--1 {
-  width: 360px;
-  height: 360px;
-  background: #74caff;
-  top: 10%;
-  left: 12%;
-  animation: float 6s ease-in-out infinite;
-}
-
-.intro__glow--2 {
-  width: 320px;
-  height: 320px;
-  background: #6c7bff;
-  bottom: 14%;
-  right: 16%;
-  animation: float 7s ease-in-out infinite reverse;
-}
-
-.intro__card {
-  position: relative;
-  max-width: 520px;
-  padding: 28px;
-  border-radius: 20px;
-  background: rgba(10, 12, 18, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-  text-align: center;
+  inset: 0;
   overflow: hidden;
 }
 
-.intro__card::after {
-  content: "";
+.intro__ring {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent);
-  opacity: 0.4;
-  pointer-events: none;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 2px solid rgba(116, 202, 255, 0.25);
+  filter: drop-shadow(0 0 60px rgba(116, 202, 255, 0.4));
 }
 
-.intro__card h2 {
+.intro__ring--a {
+  top: 12%;
+  left: 8%;
+  animation: spin 16s linear infinite;
+}
+
+.intro__ring--b {
+  bottom: 8%;
+  right: 6%;
+  animation: spin 18s linear infinite reverse;
+}
+
+.intro__beam {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(116, 202, 255, 0.2), transparent 40%),
+    radial-gradient(circle at 60% 60%, rgba(108, 123, 255, 0.2), transparent 36%);
+  mix-blend-mode: screen;
+  animation: pulse 3.2s ease-in-out infinite;
+}
+
+.intro__particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.intro__particles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
+  animation: float 6s ease-in-out infinite;
+}
+
+.intro__particles span:nth-child(1) {
+  top: 20%;
+  left: 30%;
+  animation-delay: 0s;
+}
+.intro__particles span:nth-child(2) {
+  top: 40%;
+  left: 60%;
+  animation-delay: 1s;
+}
+.intro__particles span:nth-child(3) {
+  top: 70%;
+  left: 20%;
+  animation-delay: 1.5s;
+}
+.intro__particles span:nth-child(4) {
+  top: 30%;
+  left: 75%;
+  animation-delay: 2s;
+}
+.intro__particles span:nth-child(5) {
+  top: 55%;
+  left: 45%;
+  animation-delay: 2.5s;
+}
+
+.intro__content {
+  position: relative;
+  max-width: 620px;
+  padding: 34px;
+  border-radius: 22px;
+  background: rgba(10, 12, 18, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65);
+  text-align: center;
+  animation: rise 0.5s ease;
+}
+
+.intro__content h2 {
   margin: 6px 0 10px;
   font-size: 28px;
+}
+
+.intro__lead {
+  margin-top: 6px;
 }
 
 .intro__pills {
@@ -356,6 +408,30 @@ body {
   box-shadow: 0 16px 40px rgba(116, 202, 255, 0.35);
 }
 
+.intro__hint {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.section {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+}
+
+.section__head h3 {
+  margin: 6px 0;
+  font-size: 20px;
+}
+
+.muted {
+  color: var(--muted);
+  margin: 0;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0);
@@ -373,6 +449,36 @@ body {
     opacity: 0;
   }
   to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
   }
 }

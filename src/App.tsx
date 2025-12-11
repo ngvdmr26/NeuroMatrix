@@ -24,6 +24,7 @@ const getTelegramTheme = (): ThemeParams => {
 export default function App() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Все");
+  const [task, setTask] = useState("");
   const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
@@ -62,25 +63,74 @@ export default function App() {
     });
   }, [category, search]);
 
+  const recommended = useMemo(() => {
+    const term = task.trim().toLowerCase();
+    const tokens = term.split(/\s+/).filter(Boolean);
+
+    const scoreNetwork = (n: (typeof networks)[number]) => {
+      let score = 0;
+      if (!term) return score;
+      const haystack = [
+        n.title,
+        n.description,
+        n.category,
+        ...(n.tags || [])
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      tokens.forEach((t) => {
+        if (!t) return;
+        if (haystack.includes(t)) score += 3;
+        if (n.category.toLowerCase().includes(t)) score += 2;
+        if (n.tags?.some((tag) => tag.toLowerCase() === t)) score += 2;
+      });
+
+      // бонус за совпадение категории фильтра
+      if (category !== "Все" && n.category === category) {
+        score += 1.5;
+      }
+      return score;
+    };
+
+    return networks
+      .map((n) => ({ n, score: scoreNetwork(n) }))
+      .filter(({ score }) => score > 0 || !term)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 6)
+      .map(({ n }) => n);
+  }, [task, category]);
+
   return (
     <div className="page">
       {showIntro ? (
         <div className="intro" onClick={() => setShowIntro(false)}>
-          <div className="intro__glow intro__glow--1" />
-          <div className="intro__glow intro__glow--2" />
-          <div className="intro__card">
+          <div className="intro__sky">
+            <div className="intro__ring intro__ring--a" />
+            <div className="intro__ring intro__ring--b" />
+            <div className="intro__particles">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="intro__beam" />
+          </div>
+          <div className="intro__content">
             <p className="eyebrow">NeuroMatrix</p>
-            <h2>Подборка ИИ-сервисов</h2>
-            <p className="lead">
-              Текст, код, дизайн, видео, голос и поиск — всё в одном месте.
-              Жмите, чтобы открыть и использовать прямо из Telegram.
+            <h2>Лучшие нейросети для любой задачи</h2>
+            <p className="lead intro__lead">
+              Идеи, тексты, сайты, чат-боты, картинки, видео, музыка,
+              автоматизация и маркетинг — собрали всё в одном мини-приложении.
             </p>
             <div className="intro__pills">
+              <span>Интерактивный подбор</span>
               <span>40+ сервисов</span>
-              <span>Быстрые ссылки</span>
-              <span>Теги и категории</span>
+              <span>Категории как в витрине</span>
             </div>
-            <button className="intro__button">Погнали 🚀</button>
+            <button className="intro__button">Начать</button>
+            <div className="intro__hint">Нажмите или подождите, чтобы продолжить</div>
           </div>
         </div>
       ) : null}
@@ -111,6 +161,15 @@ export default function App() {
             />
             <div className="input-hint">⌕</div>
           </div>
+          <div className="input-wrap">
+            <input
+              type="text"
+              placeholder="Опишите задачу: например, сделать лендинг, сгенерировать музыку, собрать чат-бота..."
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
+            />
+            <div className="input-hint">✨</div>
+          </div>
           <div className="chips">
             {categories.map((c) => (
               <button
@@ -124,6 +183,22 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      <section className="section">
+        <div className="section__head">
+          <p className="eyebrow">Подбор под задачу</p>
+          <h3>Мы нашли лучшее</h3>
+          <p className="muted">
+            Чем подробнее сформулируете задачу, тем точнее подбор. Совместите с
+            категорией для ещё лучшего совпадения.
+          </p>
+        </div>
+        <div className="grid grid--recommended">
+          {recommended.map((network) => (
+            <NetworkCard key={network.id} network={network} />
+          ))}
+        </div>
+      </section>
 
       <main className="grid">
         {filtered.length ? (
